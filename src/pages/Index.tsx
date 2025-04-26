@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import Navigation from '@/components/Navigation';
@@ -12,10 +11,9 @@ import Footer from '@/components/Footer';
 
 // Create a new About section
 const AboutSection = () => {
-  return (
-    <section id="about" className="py-12 bg-minecraft-stone/20">
+  return <section id="about" className="py-12 bg-minecraft-stone/20">
       <div className="container mx-auto">
-        <h2 className="text-2xl md:text-3xl text-center mb-8">About Pixel Portal Haven</h2>
+        <h2 className="text-2xl md:text-3xl text-center mb-8">About Us</h2>
         <div className="max-w-3xl mx-auto text-center">
           <p className="mb-4">
             Welcome to the most unfiltered Minecraft anarchy server experience. 
@@ -30,13 +28,10 @@ const AboutSection = () => {
           </p>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 const Index = () => {
-  return (
-    <div className="min-h-screen flex flex-col">
+  return <div className="min-h-screen flex flex-col">
       <Header />
       <Navigation />
       
@@ -51,8 +46,6 @@ const Index = () => {
       </main>
       
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
