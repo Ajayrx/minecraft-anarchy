@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 
@@ -10,6 +11,8 @@ const Navigation = () => {
   const navItems: NavItem[] = [
     { label: "News", href: "#news" },
     { label: "Player Issues", href: "#issues" },
+    { label: "Shop", href: "#shop" },
+    { label: "Gallery", href: "#gallery" },
     { label: "Terms", href: "#terms" }
   ];
   

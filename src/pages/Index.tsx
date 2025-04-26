@@ -5,6 +5,8 @@ import Navigation from '@/components/Navigation';
 import HeroBanner from '@/components/HeroBanner';
 import NewsSection from '@/components/NewsSection';
 import PlayerIssuesSection from '@/components/PlayerIssuesSection';
+import ShopSection from '@/components/ShopSection';
+import GallerySection from '@/components/GallerySection';
 import TermsSection from '@/components/TermsSection';
 import Footer from '@/components/Footer';
 
@@ -18,6 +20,8 @@ const Index = () => {
         <HeroBanner />
         <NewsSection />
         <PlayerIssuesSection />
+        <ShopSection />
+        <GallerySection />
         <TermsSection />
       </main>
       
