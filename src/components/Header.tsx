@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Copy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+
 const Header = () => {
-  const {
-    toast
-  } = useToast();
-  const serverIP = "play.minecraftserver.com";
+  const { toast } = useToast();
+  const serverIP = "minecraftanarchy.com";
+  
   const handleCopyIP = () => {
     navigator.clipboard.writeText(serverIP);
     toast({
@@ -14,7 +14,9 @@ const Header = () => {
       description: "The IP has been copied to your clipboard"
     });
   };
-  return <header className="relative">
+
+  return (
+    <header className="relative">
       {/* Animated clouds */}
       <div className="absolute top-4 left-0 w-full overflow-hidden h-16 pointer-events-none">
         <div className="animate-clouds">
@@ -23,8 +25,8 @@ const Header = () => {
           <div className="absolute top-0 left-48 w-20 h-8 bg-white opacity-70 rounded-full"></div>
         </div>
         <div className="animate-clouds" style={{
-        animationDelay: '-15s'
-      }}>
+          animationDelay: '-15s'
+        }}>
           <div className="absolute top-8 left-72 w-16 h-8 bg-white opacity-70 rounded-full"></div>
           <div className="absolute top-2 left-96 w-24 h-10 bg-white opacity-70 rounded-full"></div>
         </div>
@@ -44,6 +46,8 @@ const Header = () => {
           </div>
         </div>
       </div>
-    </header>;
+    </header>
+  );
 };
+
 export default Header;

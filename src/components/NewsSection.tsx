@@ -1,6 +1,4 @@
-
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 interface NewsItem {
   id: number;
@@ -18,22 +16,16 @@ const NewsSection = () => {
       content: "The scheduled maintenance has been completed. All systems are now online with improved performance."
     },
     {
-      id: 2,
-      date: "2025-04-20",
-      title: "New Survival World Launch",
-      content: "Explore our new survival world with custom terrain generation and unique biomes!"
-    },
-    {
       id: 3,
-      date: "2025-04-15",
       title: "Easter Event Winners",
+      date: "2025-04-15",
       content: "Congratulations to all participants in our Easter egg hunt event. The top 3 winners have received their special rewards."
     },
     {
       id: 4,
       date: "2025-04-10",
-      title: "Shop Update",
-      content: "New cosmetic items have been added to the shop. Check them out now!"
+      title: "Server Update",
+      content: "Performance improvements and optimizations have been implemented."
     }
   ];
   

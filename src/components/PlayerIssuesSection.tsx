@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -35,27 +34,17 @@ const PlayerIssuesSection = () => {
               <CardTitle className="text-center text-lg">Bug Reports</CardTitle>
             </CardHeader>
             <CardContent className="p-6">
-              <p className="mb-4">Found an issue with the server? Let us know so we can fix it!</p>
+              <p className="mb-4">Found a server-breaking bug or exploit? Report it here.</p>
               <Button className="pixel-button w-full">Report a Bug</Button>
             </CardContent>
           </Card>
           
           <Card className="bg-[#F9F3E5] border-2 border-black overflow-hidden">
             <CardHeader className="bg-minecraft-wood text-white font-pixel">
-              <CardTitle className="text-center text-lg">Ban Appeals</CardTitle>
-            </CardHeader>
-            <CardContent className="p-6">
-              <p className="mb-4">Wrongfully banned? Submit your appeal through our system.</p>
-              <Button className="pixel-button w-full">Submit Appeal</Button>
-            </CardContent>
-          </Card>
-          
-          <Card className="bg-[#F9F3E5] border-2 border-black overflow-hidden md:col-span-2">
-            <CardHeader className="bg-minecraft-wood text-white font-pixel">
               <CardTitle className="text-center text-lg">Player Support</CardTitle>
             </CardHeader>
             <CardContent className="p-6">
-              <p className="mb-4">Need help with anything else? Our support team is here to assist you!</p>
+              <p className="mb-4">Need technical help with connecting or other issues? Contact support.</p>
               <Button className="pixel-button w-full">Contact Support</Button>
             </CardContent>
           </Card>

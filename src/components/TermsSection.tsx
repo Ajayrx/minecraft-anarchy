@@ -3,16 +3,12 @@ import React from 'react';
 
 const TermsSection = () => {
   const rules = [
-    "No griefing or destroying other players' builds without permission",
-    "No hacking, cheating, or using exploits of any kind",
-    "Keep chat civil - no excessive swearing, harassment, or discrimination",
-    "No spamming in chat or with redstone contraptions",
-    "Do not advertise other servers or websites",
-    "Staff decisions are final - don't argue with staff members",
-    "Respect all players and staff at all times",
-    "No intentional server lag or disruption",
-    "Do not share personal information of others",
-    "Have fun and enjoy the server!"
+    "This is an ANARCHY server - there are no rules except:",
+    "Do not use exploits that crash the server",
+    "Do not intentionally cause server lag",
+    "Everything else is allowed - raid, grief, hack, or do whatever you want",
+    "No admin intervention - you are on your own",
+    "No refunds, no appeals, no exceptions"
   ];
 
   return (
@@ -21,11 +17,11 @@ const TermsSection = () => {
         <h2 className="text-2xl md:text-3xl text-center mb-8">Server Rules</h2>
         
         <div className="minecraft-scroll max-w-3xl mx-auto">
-          <h3 className="font-pixel text-xl mb-6 text-center">Terms & Conditions</h3>
+          <h3 className="font-pixel text-xl mb-6 text-center">Anarchy Rules</h3>
           
           <div className="space-y-4">
             <p className="mb-4">
-              Welcome to Pixel Portal Haven! By playing on our server, you agree to follow these rules:
+              Welcome to true Minecraft anarchy. There are no admins, no rules, no protection:
             </p>
             
             <ol className="list-decimal pl-6 space-y-2">
@@ -33,11 +29,6 @@ const TermsSection = () => {
                 <li key={index} className="mb-2">{rule}</li>
               ))}
             </ol>
-            
-            <p className="mt-6 text-sm italic">
-              The server administration reserves the right to modify these rules at any time. 
-              Players are responsible for staying updated with the current rules.
-            </p>
           </div>
         </div>
       </div>
