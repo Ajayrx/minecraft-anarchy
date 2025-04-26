@@ -10,8 +10,8 @@ interface NavItem {
 const Navigation = () => {
   const navItems: NavItem[] = [
     { label: "News", href: "#news" },
-    { label: "Player Issues", href: "#issues" },
-    { label: "Shop", href: "#shop" },
+    { label: "Issues", href: "#issues" },
+    { label: "About", href: "#about" },
     { label: "Gallery", href: "#gallery" },
     { label: "Terms", href: "#terms" }
   ];
