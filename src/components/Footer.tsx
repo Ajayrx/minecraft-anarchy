@@ -1,13 +1,10 @@
-
 import React from 'react';
-
 const Footer = () => {
-  return (
-    <footer className="bg-black text-white py-8 border-t-4 border-minecraft-dirt">
+  return <footer className="bg-black text-white py-8 border-t-4 border-minecraft-dirt">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="font-pixel text-lg mb-4">Pixel Portal Haven</h3>
+            <h3 className="font-pixel text-lg mb-4">ETERNEL.EU</h3>
             <p className="text-sm">The best Minecraft server experience with a community focus and regular events.</p>
           </div>
           
@@ -31,11 +28,9 @@ const Footer = () => {
         </div>
         
         <div className="mt-8 pt-4 border-t border-gray-800 text-center text-sm text-gray-500">
-          <p>© 2025 Pixel Portal Haven. Not affiliated with Mojang Studios.</p>
+          <p>© 2025 eternel.eu Not affiliated with Mojang Studios.</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;

@@ -1,9 +1,6 @@
-
 import React from 'react';
-
 const HeroBanner = () => {
-  return (
-    <div className="relative h-64 md:h-96 overflow-hidden mb-8 border-2 border-black">
+  return <div className="relative h-64 md:h-96 overflow-hidden mb-8 border-2 border-black">
       <div className="absolute inset-0 bg-gradient-to-b from-blue-400 to-sky-600 z-0"></div>
       
       {/* Pixelated mountains */}
@@ -33,12 +30,9 @@ const HeroBanner = () => {
       
       {/* Overlay text */}
       <div className="absolute inset-0 flex items-center justify-center z-40">
-        <h2 className="text-2xl md:text-4xl font-pixel text-white drop-shadow-[2px_2px_0_rgba(0,0,0,0.8)]">
-          Welcome to the Server
-        </h2>
+        <h2 className="text-2xl font-pixel text-white drop-shadow-[2px_2px_0_rgba(0,0,0,0.8)] md:text-4xl text-justify">NO RULES  &gt;&gt;&gt;
+VOICE CHAT  +  DISTANT HORIZON </h2>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default HeroBanner;
