@@ -25,7 +25,7 @@ const Navigation = () => {
             <li key={item.label} className="shrink-0">
               <a 
                 href={item.href}
-                className="font-pixel text-xs md:text-sm block px-2 py-2 hover:text-minecraft-grass transition-all duration-300 transform hover:scale-105"
+                className="font-pixel text-xs md:text-sm block px-2 py-2 hover:text-minecraft-black transition-all duration-300 transform hover:scale-105"
               >
                 {item.label}
               </a>

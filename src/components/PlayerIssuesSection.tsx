@@ -54,7 +54,7 @@ const PlayerIssuesSection = () => {
       ))}
       
       <div className="container mx-auto relative z-10">
-        <h2 className="text-2xl md:text-3xl text-center mb-8 text-white drop-shadow-lg">Player Issues</h2>
+        <h2 className="text-2xl md:text-3xl text-center mb-8 text-black drop-shadow-lg">Player Issues</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
           <Card className="bg-[#F9F3E5]/90 backdrop-blur border-2 border-black overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
