@@ -5,15 +5,31 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+
+// Lazy load pages for better performance
+const Index = React.lazy(() => import("./pages/Index"));
+const NotFound = React.lazy(() => import("./pages/NotFound"));
+
+// Optimized loading screen
+const LoadingScreen = () => (
+  <div className="flex h-screen items-center justify-center bg-minecraft-stone/20">
+    <div className="text-center space-y-4">
+      <div className="animate-bounce">
+        <span className="font-pixel text-xl">Loading...</span>
+      </div>
+      <div className="animate-pulse h-2 w-32 bg-minecraft-grass rounded"></div>
+    </div>
+  </div>
+);
 
 // Create a simpler query client with optimized settings
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      refetchOnWindowFocus: false, // Reduces unnecessary refetches
-      staleTime: 1000 * 60 * 5, // 5 minutes before data is considered stale
+      refetchOnWindowFocus: false,
+      staleTime: 1000 * 60 * 5,
+      retry: 1,
+      networkMode: 'online',
     },
   },
 });
@@ -21,13 +37,12 @@ const queryClient = new QueryClient({
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Suspense fallback={<div className="flex h-screen items-center justify-center">Loading...</div>}>
+      <Suspense fallback={<LoadingScreen />}>
         <Toaster />
         <Sonner />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
