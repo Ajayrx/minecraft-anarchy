@@ -1,44 +1,49 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, Store } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const ShopSection = () => {
+  const isMobile = useIsMobile();
+  
   const shopItems = [
     { name: "Totems", price: "32 diamonds", description: "Bundle of Totems of Undying" },
     { name: "Gapples", price: "16 diamonds", description: "Stack of Golden Apples" },
     { name: "Crystals", price: "8 diamonds", description: "End Crystals Bundle" },
-    { name: "Kits", price: "64 diamonds", description: "PvP Starter Kit" }
+    { name: "Kits", price: "64 diamonds", description: "PvP Starter Kit" },
+    { name: "Elytras", price: "128 diamonds", description: "Elytra with Unbreaking III" },
+    { name: "Shulkers", price: "96 diamonds", description: "Shulker Boxes x5" }
   ];
 
   return (
-    <section id="shop" className="py-12 bg-minecraft-stone/20">
-      <div className="container mx-auto">
-        <h2 className="text-2xl md:text-3xl text-center mb-8 font-pixel">In-Game Shop</h2>
+    <section id="shop" className="py-8 md:py-12 bg-minecraft-stone/20">
+      <div className="container mx-auto px-4">
+        <h2 className="text-2xl md:text-3xl text-center mb-6 md:mb-8 font-pixel">In-Game Shop</h2>
         
         <div className="minecraft-scroll max-w-4xl mx-auto">
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <ShoppingCart className="w-6 h-6" />
-            <h3 className="font-pixel text-xl">Trade with Diamonds</h3>
+          <div className="flex items-center justify-center gap-2 mb-4 md:mb-6">
+            <Store className="w-5 h-5 md:w-6 md:h-6" />
+            <h3 className="font-pixel text-lg md:text-xl">Trade with Diamonds</h3>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
             {shopItems.map((item, index) => (
-              <Card key={index} className="border-2 border-black bg-white/90">
-                <CardHeader>
-                  <CardTitle className="font-pixel text-lg">{item.name}</CardTitle>
+              <Card key={index} className="border-2 border-black bg-white/90 transform transition-transform hover:scale-105">
+                <CardHeader className="p-3 md:p-4">
+                  <CardTitle className="font-pixel text-base md:text-lg">{item.name}</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-minecraft-wood font-bold">{item.price}</p>
-                  <p className="text-sm mt-2">{item.description}</p>
+                <CardContent className="p-3 md:p-4 pt-0">
+                  <p className="text-minecraft-wood font-bold text-sm md:text-base">{item.price}</p>
+                  <p className="text-xs md:text-sm mt-1 md:mt-2">{item.description}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
           
-          <div className="mt-8 text-center text-sm">
+          <div className="mt-6 md:mt-8 text-center text-xs md:text-sm">
             <p>All trades are conducted in-game using diamonds as currency.</p>
-            <p className="mt-2">Contact server staff in-game for trades.</p>
+            <p className="mt-1 md:mt-2">Contact server staff in-game for trades.</p>
           </div>
         </div>
       </div>
