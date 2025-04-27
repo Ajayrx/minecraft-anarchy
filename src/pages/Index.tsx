@@ -31,6 +31,7 @@ import PlayerIssuesSection from '@/components/PlayerIssuesSection';
 import ShopSection from '@/components/ShopSection';
 import GallerySection from '@/components/GallerySection';
 import TermsSection from '@/components/TermsSection';
+import DiscordSection from '@/components/DiscordSection';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -47,6 +48,7 @@ const Index = () => {
         <ShopSection />
         <GallerySection />
         <TermsSection />
+        <DiscordSection />
       </main>
       
       <Footer />

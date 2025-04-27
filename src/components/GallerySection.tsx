@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { GalleryHorizontal, Image as ImageIcon } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import ImagePopup from './ImagePopup';
 
 type GalleryImage = {
   url: string;
@@ -10,6 +11,7 @@ type GalleryImage = {
 
 const GallerySection = () => {
   const isMobile = useIsMobile();
+  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
   const communityImages: GalleryImage[] = [
     { url: "photo-1506744038136-46273834b3fb", caption: "Ancient Base Discovery" },
@@ -42,7 +44,11 @@ const GallerySection = () => {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 mb-6 md:mb-8">
             {communityImages.map((image, index) => (
-              <Card key={index} className="group relative overflow-hidden border-2 border-black">
+              <Card 
+                key={index} 
+                className="group relative overflow-hidden border-2 border-black cursor-pointer"
+                onClick={() => setSelectedImage(image)}
+              >
                 <CardContent className="p-0">
                   <img 
                     src={getImageSrc(image.url)}
@@ -66,7 +72,11 @@ const GallerySection = () => {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
             {officialImages.map((image, index) => (
-              <Card key={index} className="group relative overflow-hidden border-2 border-black">
+              <Card 
+                key={index} 
+                className="group relative overflow-hidden border-2 border-black cursor-pointer"
+                onClick={() => setSelectedImage(image)}
+              >
                 <CardContent className="p-0">
                   <img 
                     src={getImageSrc(image.url)}
@@ -86,9 +96,17 @@ const GallerySection = () => {
             <p>Share your adventures and discoveries from the anarchy server!</p>
             <p className="mt-1 md:mt-2">Submit your screenshots on our Discord for a chance to be featured.</p>
           </div>
-          
         </div>
       </div>
+
+      {selectedImage && (
+        <ImagePopup
+          src={getImageSrc(selectedImage.url)}
+          alt={selectedImage.caption}
+          isOpen={!!selectedImage}
+          onClose={() => setSelectedImage(null)}
+        />
+      )}
     </section>
   );
 };
