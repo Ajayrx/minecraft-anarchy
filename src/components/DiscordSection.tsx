@@ -1,10 +1,9 @@
-
 import React from 'react';
 import { MessageSquare } from 'lucide-react';
 
 const DiscordSection = () => {
   return (
-    <section className="py-12 bg-minecraft-stone/10">
+    <section id="discord" className="py-12 bg-minecraft-stone/10">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center space-y-6">
           <div className="flex items-center justify-center gap-3">
