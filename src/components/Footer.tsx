@@ -28,7 +28,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-8 pt-4 border-t border-gray-800 text-center text-sm text-gray-500">
-          <p>© 2025 eternel.eu Not affiliated with Mojang Studios.</p>
+          <p>©MINECRAFTANARCHY2025-45. Not affiliated with Mojang Studios.</p>
         </div>
       </div>
     </footer>;

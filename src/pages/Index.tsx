@@ -19,10 +19,7 @@ const AboutSection = () => {
             Welcome to the most unfiltered Minecraft anarchy server experience. 
             No rules, no restrictions, just pure player-driven chaos.
           </p>
-          <p className="mb-4">
-            Pixel Portal Haven is a true anarchy server where survival of the fittest reigns supreme. 
-            Build, destroy, raid, or get raided - the choice is yours.
-          </p>
+          <p className="mb-4">PiMinecraft Anarchy is a true anarchy server where survival of the fittest reigns supreme. Build, destroy, raid, or get raided - the choice is yours.</p>
           <p>
             Join us and experience Minecraft without boundaries.
           </p>
