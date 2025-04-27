@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Discord } from 'lucide-react';
+import { MessageSquare } from 'lucide-react';
 
 const DiscordSection = () => {
   return (
@@ -8,7 +8,7 @@ const DiscordSection = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center space-y-6">
           <div className="flex items-center justify-center gap-3">
-            <Discord className="w-8 h-8 text-[#5865F2]" />
+            <MessageSquare className="w-8 h-8 text-[#5865F2]" />
             <h2 className="text-2xl md:text-3xl font-pixel">Join Our Discord</h2>
           </div>
           
@@ -24,7 +24,7 @@ const DiscordSection = () => {
           >
             <span className="flex items-center gap-2">
               Join Discord
-              <Discord className="w-5 h-5" />
+              <MessageSquare className="w-5 h-5" />
             </span>
           </a>
         </div>
