@@ -11,21 +11,21 @@ const NewsSection = () => {
   const newsItems: NewsItem[] = [
     {
       id: 1,
-      date: "2025-04-25",
+      date: "2025-04-23",
       title: "Server Maintenance Complete",
-      content: "The scheduled maintenance has been completed. All systems are now online with improved performance."
+      content: "1.21.5 works well now + Bedrock in latest edition now works too! "
+    },
+    {
+      id: 2,
+      date: "2025-04-23",
+      title: "Server Update",
+      content: "Render distance updated at 32 + Update of SimpleVoiceChat and Distant Horizons"
     },
     {
       id: 3,
-      title: "Easter Event Winners",
-      date: "2025-04-15",
-      content: "Congratulations to all participants in our Easter egg hunt event. The top 3 winners have received their special rewards."
-    },
-    {
-      id: 4,
-      date: "2025-04-10",
-      title: "Server Update",
-      content: "Performance improvements and optimizations have been implemented."
+      title: "Event Winners",
+      date: "",
+      content: "No Events pending"
     }
   ];
   

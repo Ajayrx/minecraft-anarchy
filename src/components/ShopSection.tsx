@@ -6,16 +6,16 @@ const ShopSection = () => {
   const isMobile = useIsMobile();
   const shopItems = [{
     name: "Totems",
-    price: "32 diamonds",
-    description: "Bundle of Totems of Undying"
+    price: "8 diamonds",
+    description: "Shulker Boxes x 1"
   }, {
     name: "Gapples",
-    price: "16 diamonds",
+    price: "32 diamonds",
     description: "Stack of Golden Apples"
   }, {
     name: "Crystals",
-    price: "8 diamonds",
-    description: "End Crystals Bundle"
+    price: "64 diamonds",
+    description: "Shulker Boxes x 1"
   }, {
     name: "Kits",
     price: "64 diamonds",
@@ -23,11 +23,11 @@ const ShopSection = () => {
   }, {
     name: "Elytras",
     price: "128 diamonds",
-    description: "Elytra with Unbreaking III"
+    description: "Elytra with Unbreaking III + Mending"
   }, {
     name: "Shulkers",
-    price: "96 diamonds",
-    description: "Shulker Boxes x5"
+    price: "64 diamonds",
+    description: "6 Shulker Boxes"
   }];
   return <section id="shop" className="py-8 md:py-12 bg-minecraft-stone/20">
       <div className="container mx-auto px-4">

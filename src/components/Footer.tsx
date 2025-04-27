@@ -11,7 +11,7 @@ const Footer = () => {
           <div>
             <h3 className="font-pixel text-lg mb-4">Links</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-sm hover:text-minecraft-grass transition-colors">Discord</a></li>
+              <li><a href="https://discord.gg/wKt4tsbxwj" className="text-sm hover:text-minecraft-grass transition-colors">Discord</a></li>
               <li><a href="#" className="text-sm hover:text-minecraft-grass transition-colors">Forums</a></li>
               <li><a href="#" className="text-sm hover:text-minecraft-grass transition-colors">Wiki</a></li>
               <li><a href="#" className="text-sm hover:text-minecraft-grass transition-colors">Vote</a></li>
