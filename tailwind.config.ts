@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -118,7 +117,10 @@ export default {
 				'float': 'float 6s ease-in-out infinite',
 				'flicker': 'flicker 1.5s ease-in-out infinite',
 				'clouds': 'float-horizontal 30s linear infinite',
-			}
+			},
+			scale: {
+                '102': '1.02', // Add this custom scale
+            }
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
