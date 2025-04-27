@@ -1,14 +1,8 @@
 
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import Header from '@/components/Header';
 import Navigation from '@/components/Navigation';
 import HeroBanner from '@/components/HeroBanner';
-import NewsSection from '@/components/NewsSection';
-import PlayerIssuesSection from '@/components/PlayerIssuesSection';
-import ShopSection from '@/components/ShopSection';
-import GallerySection from '@/components/GallerySection';
-import TermsSection from '@/components/TermsSection';
-import Footer from '@/components/Footer';
 
 // Create a new About section
 const AboutSection = () => {
@@ -30,6 +24,14 @@ const AboutSection = () => {
     </section>
   );
 };
+
+// Import remaining sections normally since they're lightweight
+import NewsSection from '@/components/NewsSection';
+import PlayerIssuesSection from '@/components/PlayerIssuesSection';
+import ShopSection from '@/components/ShopSection';
+import GallerySection from '@/components/GallerySection';
+import TermsSection from '@/components/TermsSection';
+import Footer from '@/components/Footer';
 
 const Index = () => {
   return (

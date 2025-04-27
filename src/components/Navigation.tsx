@@ -1,7 +1,5 @@
 
 import React from 'react';
-import { Button } from '@/components/ui/button';
-import { useIsMobile } from '@/hooks/use-mobile';
 
 interface NavItem {
   label: string;
@@ -9,7 +7,6 @@ interface NavItem {
 }
 
 const Navigation = () => {
-  const isMobile = useIsMobile();
   const navItems: NavItem[] = [
     { label: "News", href: "#news" },
     { label: "Issues", href: "#issues" },
