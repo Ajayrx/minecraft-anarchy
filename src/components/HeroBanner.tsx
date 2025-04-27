@@ -30,8 +30,7 @@ const HeroBanner = () => {
       
       {/* Overlay text */}
       <div className="absolute inset-0 flex items-center justify-center z-40">
-        <h2 className="text-2xl font-pixel text-white drop-shadow-[2px_2px_0_rgba(0,0,0,0.8)] md:text-4xl text-justify">NO RULES  &gt;&gt;&gt;
-VOICE CHAT  +  DISTANT HORIZON </h2>
+        <h2 className="text-2xl font-pixel text-white drop-shadow-[2px_2px_0_rgba(0,0,0,0.8)] md:text-4xl text-justify">NO RULES || VOICE CHAT + DISTANT HORIZON</h2>
       </div>
     </div>;
 };
