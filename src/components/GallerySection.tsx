@@ -1,10 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { GalleryHorizontal, Image as ImageIcon } from 'lucide-react';
+import { GalleryHorizontal, Image as ImageIcon, X } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import ImagePopup from './ImagePopup';
 import { Button } from '@/components/ui/button';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 type GalleryImage = {
   url: string;
@@ -17,6 +18,7 @@ const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [loadedImages, setLoadedImages] = useState<Record<string, boolean>>({});
   const [visibleCount, setVisibleCount] = useState(6);
+  const [showingMore, setShowingMore] = useState(false);
 
   const communityImages: GalleryImage[] = [
     { url: "photo-1506744038136-46273834b3fb", caption: "Ancient Base Discovery" },
@@ -48,11 +50,15 @@ const GallerySection = () => {
   // Show more images when button is clicked
   const loadMoreImages = () => {
     setVisibleCount(prev => Math.min(prev + 6, allImages.length));
+    setShowingMore(true);
   };
 
-  // Optimized for animation performance
-  const fadeInClass = (index: number) => {
-    return `opacity-0 transition-opacity duration-300 delay-[${index * 100}ms]`;
+  // Hide the additional loaded images
+  const hideMoreImages = () => {
+    setVisibleCount(6);
+    setShowingMore(false);
+    // Scroll back to gallery section
+    document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -63,14 +69,14 @@ const GallerySection = () => {
       img.onload = () => handleImageLoad(image.url);
     });
 
-    // Fade in loaded images
+    // Fade in loaded images with smoother animation
     const timer = setTimeout(() => {
       const images = document.querySelectorAll('.gallery-image');
       images.forEach((img, index) => {
         setTimeout(() => {
           img.classList.remove('opacity-0');
           img.classList.add('opacity-100');
-        }, index * 100);
+        }, index * 80); // Faster animation
       });
     }, 100);
 
@@ -91,12 +97,14 @@ const GallerySection = () => {
             {allImages.slice(0, visibleCount).map((image, index) => (
               <Card 
                 key={index} 
-                className="group gallery-item border-2 border-black cursor-pointer shadow-md hover:shadow-lg"
+                className="group gallery-item border-2 border-black cursor-pointer shadow-md hover:shadow-lg transition-all duration-300"
                 onClick={() => setSelectedImage(image)}
               >
                 <CardContent className="p-0 h-full">
                   {/* Placeholder while image is loading */}
-                  <div className="absolute inset-0 bg-gray-300 animate-pulse"></div>
+                  <div className="absolute inset-0 bg-gray-300 animate-pulse flex items-center justify-center">
+                    <ImageIcon className="text-gray-500 opacity-50" size={32} />
+                  </div>
                   
                   <img 
                     src={getImageSrc(image.url)}
@@ -113,16 +121,26 @@ const GallerySection = () => {
             ))}
           </div>
 
-          {visibleCount < allImages.length && (
-            <div className="mt-8 text-center">
+          <div className="mt-8 text-center">
+            {visibleCount < allImages.length && !showingMore ? (
               <Button 
                 onClick={loadMoreImages}
                 className="pixel-button"
               >
+                <GalleryHorizontal className="mr-2" size={18} />
                 Load More
               </Button>
-            </div>
-          )}
+            ) : showingMore && (
+              <Button 
+                onClick={hideMoreImages} 
+                variant="outline" 
+                className="pixel-button bg-red-700 hover:bg-red-800"
+              >
+                <X className="mr-2" size={18} />
+                Hide Additional Images
+              </Button>
+            )}
+          </div>
 
           <div className="mt-8 text-center text-sm md:text-base">
             <p>Share your adventures and discoveries from the anarchy server!</p>

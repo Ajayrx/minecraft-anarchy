@@ -44,6 +44,12 @@
   --sidebar-accent-foreground: 240 5.9% 10%;
   --sidebar-border: 220 13% 91%;
   --sidebar-ring: 217.2 91.2% 59.8%;
+  
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 .dark {
@@ -101,7 +107,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans scroll-smooth;
+    @apply bg-background text-foreground font-sans;
     background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
   
@@ -122,7 +128,7 @@
   
   .pixel-button {
     @apply font-pixel py-2 px-4 bg-minecraft-dirt text-white border-2 border-black 
-    hover:bg-minecraft-wood transition-all duration-200 relative transform hover:translate-y-[-2px];
+    hover:bg-minecraft-wood transition-all duration-200 relative transform hover:translate-y-[-2px] flex items-center justify-center;
     box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.3);
   }
   
@@ -137,7 +143,7 @@
   }
   
   .minecraft-scroll {
-    @apply bg-[#e0d2b4] border-4 border-[#a89370] rounded-md p-6 relative transition-all duration-200 hover:shadow-xl;
+    @apply bg-[#e0d2b4] border-4 border-[#a89370] rounded-md p-6 relative transition-all duration-300 hover:shadow-xl;
     background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23a89370' fill-opacity='0.1' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
   }
   
@@ -163,7 +169,7 @@
   }
 
   .gallery-item {
-    @apply aspect-square bg-gray-200 overflow-hidden relative transition-transform duration-200;
+    @apply aspect-[4/3] bg-gray-200 overflow-hidden relative transition-transform duration-200;
   }
   
   .gallery-item img {
