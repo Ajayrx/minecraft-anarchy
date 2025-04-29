@@ -1,9 +1,11 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Shield, AlertTriangle, Skull, BadgeInfo } from 'lucide-react';
 
 const TermsSection = () => {
+  const rulesRef = useRef<HTMLDivElement>(null);
+  
   const rules = [
     {
       icon: <AlertTriangle className="w-6 h-6 text-red-500" />,
@@ -37,28 +39,56 @@ const TermsSection = () => {
     }
   ];
 
+  useEffect(() => {
+    // Add animation to rules when they come into view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const ruleElements = rulesRef.current?.querySelectorAll('.rule-item');
+          if (ruleElements) {
+            Array.from(ruleElements).forEach((rule, index) => {
+              setTimeout(() => {
+                rule.classList.add('animate-fade-in');
+                rule.classList.remove('opacity-0');
+              }, index * 100); // Stagger the animations
+            });
+          }
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    if (rulesRef.current) {
+      observer.observe(rulesRef.current);
+    }
+
+    return () => {
+      if (rulesRef.current) observer.disconnect();
+    };
+  }, []);
+
   return (
     <section id="terms" className="py-12 md:py-16 bg-gradient-to-br from-minecraft-stone/30 to-minecraft-dirt/20 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-        <div className="absolute top-0 left-0 w-20 h-20 bg-red-500/5 rounded-full animate-float"></div>
-        <div className="absolute bottom-20 right-20 w-32 h-32 bg-amber-500/5 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-40 right-10 w-16 h-16 bg-blue-500/5 rounded-full animate-float" style={{ animationDelay: '3s' }}></div>
+        <div className="absolute top-0 left-0 w-20 h-20 bg-red-500/5 rounded-full animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-32 h-32 bg-amber-500/5 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-40 right-10 w-16 h-16 bg-blue-500/5 rounded-full animate-pulse" style={{ animationDelay: '3s' }}></div>
       </div>
 
       {/* Side decorations */}
       <div className="side-decor left-0"></div>
       <div className="side-decor right-0" style={{ backgroundPosition: '10px 10px' }}></div>
       
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl text-center mb-8 font-pixel">Server Rules</h2>
         
-        <div className="minecraft-scroll max-w-3xl mx-auto transform transition-all duration-300 hover:scale-102">
-          <ScrollArea className="h-[320px] rounded-md pr-4">
-            <div className="space-y-8 px-1">
+        <div className="minecraft-scroll max-w-3xl mx-auto transform transition-all duration-300 hover:scale-[1.01]">
+          <ScrollArea className="h-[320px] rounded-md pr-4 smooth-scrolling">
+            <div className="space-y-8 px-1" ref={rulesRef}>
               <div className="flex items-center justify-center mb-6">
-                <div className="w-16 h-16 bg-black/80 rounded-full flex items-center justify-center mr-4">
-                  <Skull className="w-10 h-10 text-red-500" />
+                <div className="w-16 h-16 bg-black/80 rounded-full flex items-center justify-center mr-4 shadow-[0_0_15px_rgba(255,0,0,0.2)]">
+                  <Skull className="w-10 h-10 text-red-500 animate-pulse" />
                 </div>
                 <h3 className="font-pixel text-xl">ANARCHY RULES</h3>
               </div>
@@ -71,9 +101,9 @@ const TermsSection = () => {
                 {rules.map((rule, index) => (
                   <div 
                     key={index} 
-                    className={`flex items-center p-3 rounded-lg transition-all duration-200 hover:translate-x-1 ${
+                    className={`rule-item flex items-center p-3 rounded-lg transition-all duration-300 hover:translate-x-1 opacity-0 ${
                       rule.highlight 
-                        ? 'bg-black/10 border-l-4 border-red-500' 
+                        ? 'bg-black/10 border-l-4 border-red-500 shadow-md' 
                         : 'border-l-4 border-amber-700/30'
                     }`}
                   >
@@ -87,7 +117,7 @@ const TermsSection = () => {
                 ))}
               </div>
               
-              <div className="mt-6 p-4 bg-black/10 rounded-lg border border-black/20">
+              <div className="mt-6 p-4 bg-gradient-to-r from-black/10 to-black/5 rounded-lg border border-black/20 transform transition-all duration-200 hover:scale-[1.02]">
                 <p className="text-sm text-center italic">
                   By joining our server, you accept that there are no rules beyond those mentioned above.
                   The true anarchy experience awaits!

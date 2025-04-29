@@ -25,7 +25,8 @@ const GallerySection = () => {
     { url: "photo-1500673922987-e212871fec22", caption: "Night Raid" },
     { url: "/cpvp.png", caption: "Community Event" },
     { url: "photo-1482881497185-d4a9ddbe4151", caption: "Desert Exploration" },
-    { url: "photo-1501854140801-50d01698950b", caption: "Mountain View" }
+    { url: "photo-1501854140801-50d01698950b", caption: "Mountain View" },
+    { url: "photo-1482938289607-e9573fc25ebb", caption: "River Valley Base" }
   ];
 
   const officialImages: GalleryImage[] = [
@@ -33,7 +34,8 @@ const GallerySection = () => {
     { url: "/spawn.png", caption: "Server Spawn" },
     { url: "photo-1470071459604-3b5ec3a7fe05", caption: "Nether Portal" },
     { url: "photo-1509316975850-ff9c5deb0cd9", caption: "Forest Hideout" },
-    { url: "photo-1523712999610-f77fbcfc3843", caption: "Sunlit Path" }
+    { url: "photo-1523712999610-f77fbcfc3843", caption: "Sunlit Path" },
+    { url: "photo-1426604966848-d7adac402bff", caption: "Mountain Fortress" }
   ];
 
   const allImages = [...communityImages, ...officialImages];
@@ -49,7 +51,7 @@ const GallerySection = () => {
 
   // Show more images when button is clicked
   const loadMoreImages = () => {
-    setVisibleCount(prev => Math.min(prev + 6, allImages.length));
+    setVisibleCount(allImages.length);
     setShowingMore(true);
   };
 
@@ -62,25 +64,24 @@ const GallerySection = () => {
   };
 
   useEffect(() => {
-    // Preload all images
-    allImages.forEach((image) => {
-      const img = new Image();
-      img.src = getImageSrc(image.url);
-      img.onload = () => handleImageLoad(image.url);
-    });
-
-    // Fade in loaded images with smoother animation
-    const timer = setTimeout(() => {
-      const images = document.querySelectorAll('.gallery-image');
-      images.forEach((img, index) => {
-        setTimeout(() => {
-          img.classList.remove('opacity-0');
-          img.classList.add('opacity-100');
-        }, index * 80); // Faster animation
+    // Preload all images to prevent flickering
+    const preloadImages = async () => {
+      const promises = allImages.map((image) => {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.onload = () => {
+            setLoadedImages(prev => ({ ...prev, [image.url]: true }));
+            resolve(true);
+          };
+          img.onerror = () => resolve(false);
+          img.src = getImageSrc(image.url);
+        });
       });
-    }, 100);
-
-    return () => clearTimeout(timer);
+      
+      await Promise.all(promises);
+    };
+    
+    preloadImages();
   }, []);
 
   return (
@@ -100,16 +101,21 @@ const GallerySection = () => {
                 className="group gallery-item border-2 border-black cursor-pointer shadow-md hover:shadow-lg transition-all duration-300"
                 onClick={() => setSelectedImage(image)}
               >
-                <CardContent className="p-0 h-full">
+                <CardContent className="p-0 h-full relative overflow-hidden">
                   {/* Placeholder while image is loading */}
-                  <div className="absolute inset-0 bg-gray-300 animate-pulse flex items-center justify-center">
-                    <ImageIcon className="text-gray-500 opacity-50" size={32} />
-                  </div>
+                  {!loadedImages[image.url] && (
+                    <div className="absolute inset-0 bg-gray-300 flex items-center justify-center">
+                      <ImageIcon className="text-gray-500 opacity-50" size={32} />
+                    </div>
+                  )}
                   
                   <img 
                     src={getImageSrc(image.url)}
                     alt={image.caption}
-                    className={`gallery-image w-full h-full object-cover transition-opacity duration-300 opacity-0`}
+                    className={`w-full h-full object-cover transition-opacity duration-300 ${
+                      loadedImages[image.url] ? 'opacity-100' : 'opacity-0'
+                    }`}
+                    style={{ aspectRatio: '4/3' }}
                     loading="lazy"
                     onLoad={() => handleImageLoad(image.url)}
                   />

@@ -99,6 +99,26 @@ html {
     -ms-overflow-hidden: none;
     scrollbar-width: none;
   }
+  
+  .smooth-scrolling {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @layer base {
@@ -113,6 +133,18 @@ html {
   
   h1, h2, h3, h4, h5, h6 {
     @apply font-pixel;
+  }
+  
+  /* Improve scrolling performance */
+  @media (prefers-reduced-motion: no-preference) {
+    :root {
+      scroll-behavior: smooth;
+    }
+  }
+  
+  /* Specific scroll behavior for smoother transitions */
+  html {
+    scroll-padding-top: 100px;
   }
 }
 
@@ -138,7 +170,7 @@ html {
   }
   
   .news-item {
-    @apply bg-white border-2 border-black mb-4 p-4 rounded transform transition-all duration-200 hover:scale-102;
+    @apply bg-white border-2 border-black mb-4 p-4 rounded transform transition-all duration-200 hover:scale-[1.01];
     box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.3);
   }
   
@@ -169,24 +201,16 @@ html {
   }
 
   .gallery-item {
-    @apply aspect-[4/3] bg-gray-200 overflow-hidden relative transition-transform duration-200;
+    @apply aspect-[4/3] bg-transparent overflow-hidden relative transition-transform duration-200;
   }
   
   .gallery-item img {
     @apply w-full h-full object-cover transition-transform duration-300 ease-out;
+    will-change: transform;
   }
 
   .gallery-item:hover img {
     @apply scale-110;
-  }
-
-  .fade-in {
-    animation: fadeIn 0.3s ease-in forwards;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
   }
 
   @keyframes flicker {
