@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
@@ -112,10 +113,32 @@ html {
 
   body {
     @apply bg-background text-foreground font-sans;
-    background: linear-gradient(135deg, 
-      #667eea 0%, 
-      #764ba2 50%, 
-      #f093fb 100%);
+    background: 
+      radial-gradient(ellipse at top, #1e3a8a 0%, #1e1b4b 40%, #0f0f23 100%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(2px 2px at 20px 30px, #ffffff, transparent),
+      radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+      radial-gradient(1px 1px at 90px 40px, #ffffff, transparent),
+      radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+      radial-gradient(2px 2px at 160px 30px, #ffffff, transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: stars 200s linear infinite;
+    pointer-events: none;
+    z-index: -1;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -125,25 +148,32 @@ html {
   html {
     scroll-padding-top: 100px;
   }
+  
+  @keyframes stars {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-2000px); }
+  }
 }
 
 @layer components {
   .minecraft-title {
     @apply font-heading font-bold;
     text-shadow: 
-      1px 1px 2px rgba(0, 0, 0, 0.3);
+      2px 2px 4px rgba(0, 0, 0, 0.3);
   }
   
   .minecraft-bg {
     background: 
-      linear-gradient(135deg, 
-        rgba(102, 126, 234, 0.1) 0%, 
-        rgba(118, 75, 162, 0.1) 50%, 
-        rgba(240, 147, 251, 0.1) 100%),
-      linear-gradient(45deg, 
-        #f8fafc 0%, 
-        #e2e8f0 50%, 
-        #cbd5e1 100%);
+      linear-gradient(45deg, rgba(255, 182, 193, 0.3) 0%, rgba(138, 43, 226, 0.2) 50%, rgba(25, 25, 112, 0.3) 100%),
+      linear-gradient(135deg, #ffd1dc 0%, #e6e6fa 25%, #dda0dd 50%, #9370db 75%, #483d8b 100%);
+    background-size: 400% 400%;
+    animation: minecraft-gradient 8s ease infinite;
+  }
+  
+  @keyframes minecraft-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
   .pixel-button {
