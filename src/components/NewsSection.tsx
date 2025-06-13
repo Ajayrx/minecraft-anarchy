@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Newspaper, Calendar, Info, ChevronDown, ChevronUp, BookOpen, FileText, Star } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
@@ -94,24 +93,24 @@ const NewsSection = () => {
   };
   
   return (
-    <section id="news" className="py-20 md:py-32 bg-gradient-to-br from-blue-50 to-indigo-100">
+    <section id="news" className="py-20 md:py-32 minecraft-bg min-h-screen">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="mb-16 text-center">
-          <div className="inline-flex items-center px-4 py-2 bg-white/60 rounded-full mb-6 border border-gray-200">
+          <div className="inline-flex items-center px-4 py-2 bg-white/60 rounded-full mb-6 border-2 border-black/20">
             <Star className="w-4 h-4 mr-2 text-minecraft-wood" />
             <span className="text-sm font-medium">Server Updates</span>
           </div>
           
-          <h2 className="text-5xl md:text-7xl text-center font-pixel mb-6 text-gray-800">Latest News</h2>
+          <h2 className="text-5xl md:text-7xl text-center minecraft-title mb-6 text-white">Latest News</h2>
           
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto text-gray-600 leading-relaxed">
+          <p className="text-xl md:text-2xl max-w-3xl mx-auto text-white/90 leading-relaxed font-semibold">
             Stay updated with the latest changes and announcements for our Minecraft anarchy server
           </p>
           
-          <div className="mt-8 h-1 w-32 bg-minecraft-wood mx-auto rounded-full"></div>
+          <div className="mt-8 h-1 w-32 bg-white/50 mx-auto rounded-full"></div>
         </div>
         
-        <div className="max-w-6xl mx-auto bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-xl p-8 md:p-12">
+        <div className="max-w-6xl mx-auto bg-white/90 backdrop-blur-sm rounded-2xl border-2 border-black/20 shadow-2xl p-8 md:p-12">
           {/* Desktop news layout */}
           <div className="hidden md:block">
             <div className="grid grid-cols-1 gap-y-8">
@@ -125,17 +124,17 @@ const NewsSection = () => {
                     <div className="flex justify-between items-start mb-4">
                       <div className="flex flex-col">
                         <div className="flex items-center gap-4">
-                          <div className={`p-3 rounded-xl ${tagColors.bg}`}>
+                          <div className={`p-3 rounded-xl border-2 border-black/20 ${tagColors.bg}`}>
                             {item.tag === "Update" && <FileText className={`w-6 h-6 ${tagColors.text}`} />}
                             {item.tag === "Technical" && <Info className={`w-6 h-6 ${tagColors.text}`} />}
                             {item.tag === "Event" && <BookOpen className={`w-6 h-6 ${tagColors.text}`} />}
                             {item.tag === "World" && <Newspaper className={`w-6 h-6 ${tagColors.text}`} />}
                           </div>
                           
-                          <h3 className="font-pixel text-2xl text-gray-800">{item.title}</h3>
+                          <h3 className="minecraft-title text-2xl text-gray-800">{item.title}</h3>
                           
                           {item.isImportant && (
-                            <Badge variant="outline" className="bg-red-50 text-red-700 border-red-200">
+                            <Badge variant="outline" className="bg-red-50 text-red-700 border-red-200 border-2">
                               Important
                             </Badge>
                           )}
@@ -143,7 +142,7 @@ const NewsSection = () => {
                         
                         <div className="flex items-center gap-3 mt-3">
                           {item.tag && (
-                            <Badge variant="outline" className={`${tagColors.bg} ${tagColors.text} ${tagColors.border} text-sm font-semibold`}>
+                            <Badge variant="outline" className={`${tagColors.bg} ${tagColors.text} ${tagColors.border} border-2 text-sm font-semibold`}>
                               {item.tag}
                             </Badge>
                           )}
@@ -156,7 +155,7 @@ const NewsSection = () => {
                       
                       <button 
                         onClick={() => toggleExpand(item.id)}
-                        className={`p-3 rounded-full transition-colors ${
+                        className={`p-3 rounded-full border-2 border-black/20 transition-colors ${
                           expandedId === item.id ? `${tagColors.bg} ${tagColors.text}` : 'hover:bg-gray-100'
                         }`}
                       >
@@ -171,7 +170,7 @@ const NewsSection = () => {
                     <div className={`overflow-hidden transition-all duration-300 ${
                       expandedId === item.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                     }`}>
-                      <div className={`p-6 rounded-xl ${tagColors.bg} border ${tagColors.border} mt-4`}>
+                      <div className={`p-6 rounded-xl ${tagColors.bg} border-2 ${tagColors.border} mt-4`}>
                         <p className="text-lg leading-relaxed text-gray-700">{item.content}</p>
                       </div>
                     </div>
@@ -193,18 +192,18 @@ const NewsSection = () => {
                         item.isImportant ? 'border-l-4 border-red-500' : ''
                       }`}>
                         <div className="flex justify-between items-center mb-4">
-                          <div className={`p-2 rounded-lg ${tagColors.bg} mr-2`}>
+                          <div className={`p-2 rounded-lg border-2 border-black/20 ${tagColors.bg} mr-2`}>
                             {item.tag === "Update" && <FileText className={`w-5 h-5 ${tagColors.text}`} />}
                             {item.tag === "Technical" && <Info className={`w-5 h-5 ${tagColors.text}`} />}
                             {item.tag === "Event" && <BookOpen className={`w-5 h-5 ${tagColors.text}`} />}
                             {item.tag === "World" && <Newspaper className={`w-5 h-5 ${tagColors.text}`} />}
                           </div>
                           
-                          <h3 className="font-pixel text-lg text-gray-800 flex-1">{item.title}</h3>
+                          <h3 className="minecraft-title text-lg text-gray-800 flex-1">{item.title}</h3>
                         </div>
                         
                         <div className="flex items-center gap-2 mb-4">
-                          <Badge variant="outline" className={`${tagColors.bg} ${tagColors.text} ${tagColors.border} text-xs`}>
+                          <Badge variant="outline" className={`${tagColors.bg} ${tagColors.text} ${tagColors.border} border-2 text-xs`}>
                             {item.tag}
                           </Badge>
                           <div className="flex items-center gap-1 text-xs text-gray-500 font-mono">
@@ -213,7 +212,7 @@ const NewsSection = () => {
                           </div>
                         </div>
                         
-                        <div className={`p-4 rounded-lg ${tagColors.bg} border ${tagColors.border} flex-grow`}>
+                        <div className={`p-4 rounded-lg ${tagColors.bg} border-2 ${tagColors.border} flex-grow`}>
                           <p className="text-sm text-gray-700">{item.content}</p>
                         </div>
                       </div>

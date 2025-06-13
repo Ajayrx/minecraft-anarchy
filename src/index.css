@@ -126,6 +126,30 @@ html {
 }
 
 @layer components {
+  .minecraft-title {
+    @apply font-pixel text-shadow-minecraft;
+    text-shadow: 
+      2px 2px 0px #000000,
+      -1px -1px 0px #000000,
+      1px -1px 0px #000000,
+      -1px 1px 0px #000000,
+      1px 1px 0px #000000;
+  }
+  
+  .minecraft-bg {
+    background: 
+      linear-gradient(45deg, rgba(255, 182, 193, 0.3) 0%, rgba(138, 43, 226, 0.2) 50%, rgba(25, 25, 112, 0.3) 100%),
+      linear-gradient(135deg, #ffd1dc 0%, #e6e6fa 25%, #dda0dd 50%, #9370db 75%, #483d8b 100%);
+    background-size: 400% 400%;
+    animation: minecraft-gradient 8s ease infinite;
+  }
+  
+  @keyframes minecraft-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
   .pixel-button {
     @apply font-pixel py-2 px-4 bg-minecraft-dirt text-white border-2 border-black 
     hover:bg-minecraft-wood transition-all duration-200 relative transform hover:translate-y-[-2px] flex items-center justify-center;
@@ -138,7 +162,7 @@ html {
   }
   
   .news-card {
-    @apply bg-white border border-gray-200 mb-4 p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200;
+    @apply bg-white/90 border border-gray-200 mb-6 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300;
   }
   
   .section-container {
@@ -146,7 +170,7 @@ html {
   }
   
   .section-heading {
-    @apply text-4xl md:text-5xl text-center mb-12 font-pixel relative;
+    @apply text-4xl md:text-5xl text-center mb-12 minecraft-title relative;
   }
   
   .section-heading::after {
