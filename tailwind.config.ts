@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -73,8 +74,8 @@ export default {
 				}
 			},
 			fontFamily: {
-				'pixel': ['"Press Start 2P"', 'cursive'],
-				'sans': ['Roboto', 'sans-serif'],
+				'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+				'heading': ['Poppins', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -119,7 +120,7 @@ export default {
 				'clouds': 'float-horizontal 30s linear infinite',
 			},
 			scale: {
-                '102': '1.02', // Add this custom scale
+                '102': '1.02',
             }
 		}
 	},

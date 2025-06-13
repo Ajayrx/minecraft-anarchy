@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -112,11 +112,14 @@ html {
 
   body {
     @apply bg-background text-foreground font-sans;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, 
+      #667eea 0%, 
+      #764ba2 50%, 
+      #f093fb 100%);
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-pixel;
+    @apply font-heading font-semibold;
   }
   
   html {
@@ -126,42 +129,36 @@ html {
 
 @layer components {
   .minecraft-title {
-    @apply font-pixel;
+    @apply font-heading font-bold;
     text-shadow: 
-      2px 2px 0px #000000,
-      -1px -1px 0px #000000,
-      1px -1px 0px #000000,
-      -1px 1px 0px #000000,
-      1px 1px 0px #000000;
+      1px 1px 2px rgba(0, 0, 0, 0.3);
   }
   
   .minecraft-bg {
     background: 
-      linear-gradient(45deg, rgba(255, 182, 193, 0.3) 0%, rgba(138, 43, 226, 0.2) 50%, rgba(25, 25, 112, 0.3) 100%),
-      linear-gradient(135deg, #ffd1dc 0%, #e6e6fa 25%, #dda0dd 50%, #9370db 75%, #483d8b 100%);
-    background-size: 400% 400%;
-    animation: minecraft-gradient 8s ease infinite;
-  }
-  
-  @keyframes minecraft-gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+      linear-gradient(135deg, 
+        rgba(102, 126, 234, 0.1) 0%, 
+        rgba(118, 75, 162, 0.1) 50%, 
+        rgba(240, 147, 251, 0.1) 100%),
+      linear-gradient(45deg, 
+        #f8fafc 0%, 
+        #e2e8f0 50%, 
+        #cbd5e1 100%);
   }
 
   .pixel-button {
-    @apply font-pixel py-2 px-4 bg-minecraft-dirt text-white border-2 border-black 
-    hover:bg-minecraft-wood transition-all duration-200 relative transform hover:translate-y-[-2px] flex items-center justify-center;
-    box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.3);
+    @apply font-sans font-medium py-3 px-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white 
+    border border-transparent rounded-lg hover:from-blue-700 hover:to-purple-700 
+    transition-all duration-200 transform hover:translate-y-[-1px] flex items-center justify-center
+    shadow-lg hover:shadow-xl;
   }
   
   .pixel-button:active {
-    @apply transform translate-y-1;
-    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.3);
+    @apply transform translate-y-0;
   }
   
   .news-card {
-    @apply bg-white/90 border border-gray-200 mb-6 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300;
+    @apply bg-white/95 border border-gray-200 mb-6 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
   }
   
   .section-container {
@@ -174,7 +171,7 @@ html {
   
   .section-heading::after {
     content: '';
-    @apply block w-24 h-1 bg-minecraft-wood/50 mx-auto mt-4;
+    @apply block w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-4 rounded-full;
   }
 
   .gallery-grid {
@@ -182,7 +179,7 @@ html {
   }
 
   .gallery-item {
-    @apply aspect-[4/3] bg-transparent overflow-hidden relative transition-transform duration-200;
+    @apply aspect-[4/3] bg-transparent overflow-hidden relative transition-transform duration-200 rounded-lg;
   }
   
   .gallery-item img {

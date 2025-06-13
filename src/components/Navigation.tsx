@@ -36,14 +36,14 @@ const Navigation = () => {
   ];
   
   return (
-    <nav className={`${scrolled ? 'bg-minecraft-stone/95' : 'bg-minecraft-stone/80'} backdrop-blur-sm border-y-2 border-black sticky top-0 z-50 transition-all duration-300 py-1`}>
+    <nav className={`${scrolled ? 'bg-white/95' : 'bg-white/80'} backdrop-blur-md border-y border-gray-200/50 sticky top-0 z-50 transition-all duration-300 py-2`}>
       <div className="container mx-auto px-2 md:px-6">
-        <ul className="flex justify-center items-center gap-1 sm:gap-2 md:gap-6 py-2 overflow-x-auto no-scrollbar">
+        <ul className="flex justify-center items-center gap-2 sm:gap-4 md:gap-8 py-3 overflow-x-auto no-scrollbar">
           {navItems.map((item) => (
             <li key={item.label} className="shrink-0">
               <a 
                 href={item.href}
-                className="font-pixel text-xs md:text-sm block px-2 py-1 md:py-2 hover:text-accent transition-all duration-200 transform hover:translate-y-[-2px]"
+                className="font-medium text-sm md:text-base block px-3 py-2 text-gray-700 hover:text-blue-600 transition-all duration-200 transform hover:translate-y-[-1px] rounded-lg hover:bg-blue-50"
               >
                 {item.label}
               </a>

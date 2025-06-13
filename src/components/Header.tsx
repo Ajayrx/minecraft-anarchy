@@ -22,7 +22,7 @@ const Header = () => {
   };
 
   return (
-    <header className="relative py-8">
+    <header className="relative py-12">
       {/* Animated clouds - optimized for performance */}
       <div className="absolute top-0 left-0 w-full h-24 pointer-events-none overflow-hidden">
         <div className="absolute w-full" style={{
@@ -39,13 +39,15 @@ const Header = () => {
       {/* Main header content */}
       <div className="container mx-auto px-4">
         <div className="text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl mb-6 minecraft-title text-minecraft-dirt drop-shadow-lg">MINECRAFT ANARCHY</h1>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl mb-8 font-heading font-bold text-white drop-shadow-lg">
+            MINECRAFT ANARCHY
+          </h1>
           
-          <div className="max-w-md mx-auto bg-black/10 backdrop-blur-sm p-6 rounded-lg border-2 border-black shadow-lg">
-            <h2 className="text-lg md:text-xl minecraft-title mb-4">SERVER IP</h2>
+          <div className="max-w-md mx-auto bg-white/20 backdrop-blur-md p-8 rounded-2xl border border-white/20 shadow-2xl">
+            <h2 className="text-xl md:text-2xl font-heading font-semibold mb-6 text-white">SERVER IP</h2>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <div className="bg-white/90 px-4 py-2 rounded border-2 border-black w-full sm:w-auto text-center">
-                <span className="font-mono text-lg font-semibold select-all">{serverIP}</span>
+              <div className="bg-white/95 px-6 py-3 rounded-lg border border-gray-200 w-full sm:w-auto text-center shadow-lg">
+                <span className="font-mono text-lg font-semibold select-all text-gray-800">{serverIP}</span>
               </div>
               <Button 
                 onClick={handleCopyIP} 
