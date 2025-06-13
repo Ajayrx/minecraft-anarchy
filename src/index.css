@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;500;700&display=swap');
 
 @tailwind base;
@@ -127,7 +126,7 @@ html {
 
 @layer components {
   .minecraft-title {
-    @apply font-pixel text-shadow-minecraft;
+    @apply font-pixel;
     text-shadow: 
       2px 2px 0px #000000,
       -1px -1px 0px #000000,
